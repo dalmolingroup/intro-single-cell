@@ -1,8 +1,6 @@
 ---
 title: "Clustering and markers identification"
 format: html
-execute: 
-  eval: false
 ---
 
 ## Motivation
@@ -336,7 +334,7 @@ sc_qc_GSM5102900_sct  <- sc_qc_GSM5102900 %>%
   RunUMAP(dims = 1:20, n.components = 2, seed.use = 123) %>%
   RunTSNE(dims = 1:20, n.components = 2, seed.use = 123) %>%
   FindNeighbors(dims = 1:20) %>% 
-  FindClusters(resolution = seq(0, 1, 0.1))
+  FindClusters(resolution = seq(0.1, 1, 0.1))
 ```
 
 ```{r}
@@ -360,11 +358,12 @@ sc_qc_GSM5102900_sct@meta.data$scshc_clusters <- as.factor(clusters[[1]])
 DimPlot(sc_qc_GSM5102900_sct, reduction = "umap", group.by = "scshc_clusters")
 ```
 
-We can also compare the clustering we performed with Seurat (resolution = 0.5). The `testClusters` function will test if the Seurat clustering are statistically significant and return the labels a
+We can also check if the number of clusters found with Seurat (SCT, resolution = 0.5) are optimal. The `testClusters` function will test if the cluster configuration provided by Seurat is optimal, according to their statistical test. 
 
 ```{r}
 # Find the optimal number of clusters given the result from Seurat
-final_labels <- testClusters(mt, cluster_ids = as.character(sc_qc_GSM5102900_sct@meta.data$SCT_snn_res.0.3), 
+final_labels <- testClusters(mt, 
+                             cluster_ids = as.character(sc_qc_GSM5102900_sct@meta.data$SCT_snn_res.0.3), 
                              alpha = 0.05)
 
 # Create

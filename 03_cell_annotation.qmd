@@ -1,9 +1,6 @@
 ---
 title: "Cell type annotation"
 format: html
-execute: 
-  eval: false
-
 ---
 
 ## Motivation
