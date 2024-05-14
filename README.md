@@ -1,6 +1,6 @@
 # Single-cell RNA-seq introduction course
 
-This course covers the basics of single-cell RNA-seq analysis. This material was meant to be continuously improved by the students from the Dalmolin Systems Biology Group.  
+This course covers the basics of single-cell RNA-seq analysis. This material was meant to be continuously improved by the Dalmolin Systems Biology Group students.  
 
 This book is based on the following references:
 
@@ -12,7 +12,9 @@ This book is based on the following references:
 - [SingleR](https://bioconductor.org/books/release/SingleRBook/)
 - This awesome playlist on YouTube (in python): [link](https://www.youtube.com/watch?v=cmOlCTGX4Ik&list=PLi1VnGoeDGjuZmB8zJNqpuhGe6Zj7HNYQ)
 
-# Install R packages using conda or mamba
+# Install R packages: 
+
+## Using conda or mamba
 
 Note the `environment.yml` file. It has a list of R packages that are going to be used in this course. Install them by:
 
@@ -23,6 +25,19 @@ conda env create -f environment.yml
 Activate the `intro-single-cell` environment:
 ```
 conda activate intro-single-cell
+```
+
+## Or using the `install.R` script
+
+Please note the install.R script. In a R session, run
+```
+source("install.R")
+```
+
+Or run in the terminal:
+
+```
+Rscript install.R
 ```
 
 # Download the data
